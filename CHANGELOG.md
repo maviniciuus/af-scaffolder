@@ -2,6 +2,10 @@
 
  All relevant modifications to the `af-scaffolder` will be documented in this file following the one specified in [KEEP CHANGELOG](http://keepachangelog.com/).
 
+## 1.1.1 - 2018-12-10
+## Fixed
+- Correction in the "package.json" relevant to a global NPM package..
+
 ## 1.1.0 - 2018-12-10
 ## Added
 - Adding CHANGELOG.
