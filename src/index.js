@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var _get = require("lodash").get;
 var scaffolder = require("./helpers/scaffolder");
 
