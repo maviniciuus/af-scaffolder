@@ -1,0 +1,18 @@
+import Tabular from 'meteor/aldeed:tabular';
+
+import {{app_capitalize}} from "../lib/collection";
+
+TabularTables.{{app_capitalize}} = new Tabular.Table({
+  name: '{{app_capitalize}}',
+  stateSave: true, // Save current state of pagination, sorting, search, etc at user localstorage.
+  stateDuration: -1,
+  skipCount: false,
+  autoWidth: false,
+  collection: {{app_capitalize}},
+  columns: [
+    {
+      data: 'informacao.nome',
+      title: 'Nome',
+    },
+  ],
+});

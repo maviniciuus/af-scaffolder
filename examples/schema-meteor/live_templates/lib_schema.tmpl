@@ -1,0 +1,14 @@
+import SimpleSchema from "simpl-schema";
+import { Tracker } from "meteor/tracker";
+
+const Schema = new SimpleSchema({
+  informacao: new SimpleSchema({
+    nome: {
+      type: String,
+      max: 50
+    }
+  })
+},
+{ tracker: Tracker });
+
+export default Schema;

@@ -1,0 +1,22 @@
+{
+  "name": "acelera-scaffolder",
+  "version": "1.0.0",
+  "description": "Library to create and maintain application design patterns. With a structure defined in JSON you can create new modules avoiding copy and paste errors.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "acelera",
+    "scaffolder",
+    "design-pattern",
+    "dev-tools"
+  ],
+  "author": "Marcus Vinícius Mendes Gonçalves",
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^4.0.12",
+    "lodash": "^4.17.11",
+    "minimist": "^1.2.0"
+  }
+}

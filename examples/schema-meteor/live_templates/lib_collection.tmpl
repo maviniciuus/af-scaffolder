@@ -1,0 +1,7 @@
+import { Mongo } from "meteor/mongo";
+import Schema from "./schema";
+
+const {{app_capitalize}} = new Mongo.Collection("{{app_lower_case}}");
+{{app_capitalize}}.attachSchema(Schema);
+
+export default {{app_capitalize}};
