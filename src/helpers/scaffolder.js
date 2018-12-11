@@ -1,4 +1,4 @@
-var _ = require("lodash");
+var _get = require("lodash").get;
 var fs = require("fs");
 var Handlebars = require("handlebars");
 
@@ -18,7 +18,11 @@ var scaffolder = {
     throw new Error(errors.model_not_found(path));
   },
   rename: function(string) {
-    return string.replace("{{modulo_name}}", this.app);
+    string = string.replace("{{name_upper}}", this.app.toUpperCase());
+    string = string.replace("{{name_lower}}", this.app.toLowerCase());
+    string = string.replace("{{name_capitalize}}", files.toCapitalize(this.app));
+
+    return string
   },
   touch_file: function(path, template = "") {
     path = this.rename(path);
@@ -47,8 +51,10 @@ var scaffolder = {
     if (files.exists(templatePath)) {
       var template = Handlebars.compile(files.get_contents(templatePath));
       return template({
-        app_capitalize: this.app.replace(/^\w/, c => c.toUpperCase()),
-        app_lower_case: this.app.toLowerCase()
+        app_capitalize: files.toCapitalize(this.app),
+        app_upper_case: this.app.toUpperCase(),
+        app_lower_case: this.app.toLowerCase(),
+        date: new Date().toDateString()
       });
     }
 
@@ -60,7 +66,7 @@ var scaffolder = {
   },
   build: function(models, parentPath = ".") {
     models.map(function(model) {
-      if (_.get(model, "children", []).length > 0) {
+      if (_get(model, "children", []).length > 0) {
         scaffolder.touch_folder(`${parentPath}/${model.name}`);
         scaffolder.build(
           model.children,

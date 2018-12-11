@@ -2,9 +2,17 @@
 
  All relevant modifications to the `af-scaffolder` will be documented in this file following the one specified in [KEEP CHANGELOG](http://keepachangelog.com/).
 
+## 1.2.0 - 2018-12-11
+## Added
+- I updated the name parameter to [-n] (name), before it was [-m] (module). I added context variables to the template processor..
+
+## 1.1.2 - 2018-12-10
+## Fixed
+- Fixes in the bin entry of the package.json, to interpret the entrypoint and run as a global package..
+
 ## 1.1.1 - 2018-12-10
 ## Fixed
-- Correction in the "package.json" relevant to a global NPM package..
+- Correction in the "package.json" relevant to a global NPM package.
 
 ## 1.1.0 - 2018-12-10
 ## Added
