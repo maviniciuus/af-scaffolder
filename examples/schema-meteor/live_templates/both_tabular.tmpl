@@ -10,9 +10,11 @@ TabularTables.{{capitalize pack_name}} = new Tabular.Table({
   autoWidth: false,
   collection: {{capitalize pack_name}},
   columns: [
-    {
-      data: 'informacao.nome',
-      title: 'Nome',
-    },
+    {{#each fields}}
+      {
+        data: {{singulate_pt (lowercase this)}}, 
+        title: {{pluralize_pt (capitalize this)}}, 
+      },
+    {{/each}}
   ],
 });
