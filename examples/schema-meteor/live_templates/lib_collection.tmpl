@@ -1,7 +1,7 @@
 import { Mongo } from "meteor/mongo";
 import Schema from "./schema";
 
-const {{app_capitalize}} = new Mongo.Collection("{{app_lower_case}}");
-{{app_capitalize}}.attachSchema(Schema);
+const {{capitalize pack_name}} = new Mongo.Collection("{{lowercase pack_name}}");
+{{capitalize pack_name}}.attachSchema(Schema);
 
-export default {{app_capitalize}};
+export default {{capitalize pack_name}};

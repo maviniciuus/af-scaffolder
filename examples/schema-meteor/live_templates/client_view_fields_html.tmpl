@@ -1,11 +1,10 @@
-<template name="{{app_lower_case}}_fields">
-    <fieldset>
-      <label>ID</label>
-      <input type="text" name="_id" readonly>
-    </fieldset>
-    <fieldset>
-      <label>NOME:</label>
-      <input type="text" name="informacao.nome" readonly>
-    </fieldset>
+<template name="{{lowercase pack_name}}_fields">
+    {{#each fields}}
+      <fieldset>
+        <label for="{{lowercase this}}">{{capitalize this}}</label>
+        <input type="text" name="{{lowercase this}}" readonly>
+      </fieldset>
+    {{/each}}
+
     <button type="submit">SALVAR</button>
 </template>

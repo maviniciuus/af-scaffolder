@@ -1,17 +1,17 @@
 import { Meteor } from 'meteor/meteor';
-import {{app_capitalize}} from '../model/collection';
+import {{capitalize pack_name}} from '../model/collection';
 
 Meteor.methods({
-  '{{app_lower_case}}.findOne'(_id) {
-    return {{app_capitalize}}.findOne(_id);
+  '{{lowercase pack_name}}.findOne'(_id) {
+    return {{capitalize pack_name}}.findOne(_id);
   },
-  '{{app_lower_case}}.insert'(grupo) {
-    {{app_capitalize}}.insert(grupo);
+  '{{lowercase pack_name}}.insert'(grupo) {
+    {{capitalize pack_name}}.insert(grupo);
   },
-  '{{app_lower_case}}.remove'(grupoId) {
-    {{app_capitalize}}.remove(grupoId);
+  '{{lowercase pack_name}}.remove'(grupoId) {
+    {{capitalize pack_name}}.remove(grupoId);
   },
-  '{{app_lower_case}}.update'(param) {
-    {{app_capitalize}}.update({_id: param._id}, {$set: Object.assign({}, param.data)});
+  '{{lowercase pack_name}}.update'(param) {
+    {{capitalize pack_name}}.update({_id: param._id}, {$set: Object.assign({}, param.data)});
   },
 });

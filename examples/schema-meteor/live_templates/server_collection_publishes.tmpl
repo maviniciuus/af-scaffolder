@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import {{app_capitalize}} from '../model/collection';
+import {{capitalize pack_name}} from '../model/collection';
 
 if (Meteor.isServer) {
-  Meteor.publish('{{app_lower_case}}', function(query = {}) {
-    return {{app_capitalize}}.find(query);
+  Meteor.publish('{{lowercase pack_name}}', function(query = {}) {
+    return {{capitalize pack_name}}.find(query);
   });
 }

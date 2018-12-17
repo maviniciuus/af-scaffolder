@@ -1,6 +1,6 @@
 {
   "name": "af-scaffolder",
-  "version": "1.3.1",
+  "version": "2.0.0",
   "description": "Library to create and maintain application design patterns. With a structure defined in JSON you can create new modules avoiding copy and paste errors.",
   "main": "src/index.js",
   "preferGlobal": true,
