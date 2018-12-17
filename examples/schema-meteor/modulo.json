@@ -1,6 +1,6 @@
 [
   {
-    "name": "{{modulo_name}}",
+    "name": "{{lowercase pack_name}}",
     "children": [
       {
         "name": "both",
@@ -60,27 +60,27 @@
                 ]
               },
               {
-                "name": "{{modulo_name}}_grid.js",
+                "name": "{{lowercase pack_name}}_grid.js",
                 "template": "live_templates/client_view_grid_js.tmpl"
               },
               {
-                "name": "{{modulo_name}}_grid.html",
+                "name": "{{lowercase pack_name}}_grid.html",
                 "template": "live_templates/client_view_grid_html.tmpl"
               },
               {
-                "name": "{{modulo_name}}_fields.js",
+                "name": "{{lowercase pack_name}}_fields.js",
                 "template": "live_templates/client_view_fields_js.tmpl"
               },
               {
-                "name": "{{modulo_name}}_fields.html",
+                "name": "{{lowercase pack_name}}_fields.html",
                 "template": "live_templates/client_view_fields_html.tmpl"
               },
               {
-                "name": "{{modulo_name}}_form.js",
+                "name": "{{lowercase pack_name}}_form.js",
                 "template": "live_templates/client_view_form_js.tmpl"
               },
               {
-                "name": "{{modulo_name}}_form.html",
+                "name": "{{lowercase pack_name}}_form.html",
                 "template": "live_templates/client_view_form_html.tmpl"
               }
             ]
