@@ -1,6 +1,10 @@
-# Changelog
+# Changelog - AF-SCAFFOLDER v1 - (v1.x - MAINTENANCE MODE, CHECK THE v2.x)
 
  All relevant modifications to the `af-scaffolder` will be documented in this file following the one specified in [KEEP CHANGELOG](http://keepachangelog.com/).
+
+## 1.3.1 - 2018-12-17
+## Updated
+- Maintenance Mode Project;
 
 ## 1.3.0 - 2018-12-11
 ## Added
