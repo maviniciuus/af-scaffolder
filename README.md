@@ -1,5 +1,9 @@
 # af-scaffolder v2.0
 
+[![](https://img.shields.io/github/languages/code-size/badges/shields.svg)](https://github.com/maviniciuus/af-scaffolder)
+[![](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/af-scaffolder)
+[![](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/maviniciuus/af-scaffolder)
+
 ## Sobre
 Uma biblioteca para manter design patterns. Com a estrutura definida em JSON, você cria o esqueleto e gera os arquivos baseados em templates caso queira. Evite erros de copiar e colar, o código é gerado automaticamente a partir do template.
 
