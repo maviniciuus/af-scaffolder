@@ -34,7 +34,7 @@ Onde o conteudo do arquivo `scheme.json` é:
     "name": "{{lowercase pack_name}}",
     "children": [
       {
-        "name": "controller",
+        "name": "controllers",
         "children": [
           {
             "name": "Controller{{capitalize pack_name}}.js"
@@ -42,7 +42,7 @@ Onde o conteudo do arquivo `scheme.json` é:
         ]
       },
       {
-        "name": "model",
+        "name": "models",
         "children": [
           {
             "name": "Model{{capitalize pack_name}}.js"
