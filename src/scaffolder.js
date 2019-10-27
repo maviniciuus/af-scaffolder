@@ -1,99 +1,97 @@
-//dependencies
-let _get = require('lodash').get;
-let fs = require('fs');
-//src
-let handleBars = require('./handleBars');
-let files = require('./helpers/files');
-let errors = require('./helpers/errors');
+const { Files } = require('af-helpers');
+const lodashGet = require('lodash').get;
+const fs = require('fs');
+const handleBars = require('./handleBars');
+const errors = require('./helpers/errors');
 
-let defaultArgs = ['_', 's', 'm', 'n', 'a'];
-let scaffolder = {
-    boot(scheme_path, app, argv = {}) {
-        this.scheme_path = scheme_path;
+const defaultArgs = ['_', 's', 'm', 'n', 'a'];
+const scaffolder = {
+  boot(schemePath, app, argv = {}) {
+    this.schemePath = schemePath;
 
-        if (files.exists(this.scheme_path)) {
-            this.pack_name = app;
-            this.models = JSON.parse(files.get_contents(this.scheme_path));
-            this.arguments = this.parse_arguments(argv);
-            return this;
-        }
+    if (Files.exists(this.schemePath)) {
+      this.pack_name = app;
+      this.models = JSON.parse(Files.get_contents(schemePath));
+      this.arguments = this.parseArguments(argv);
+      return this;
+    }
 
-        throw new Error(errors.model_not_found(path));
-    },
-    parse_arguments: function (args) {
-        let auxArgs = {...args, pack_name: this.pack_name};
-        // console.log('parse_arguments=> input:', args);
+    throw new Error(errors.model_not_found(schemePath));
+  },
+  parseArguments(args) {
+    const auxArgs = { ...args, pack_name: this.pack_name };
+    // console.log('parseArguments=> input:', args);
 
-        Object.keys(args).map(function (prop) {
-            // arguments after "-a", becomes an array with af-scaffolder array parser
-            // Ex.: -a fieldName:field1,field2,field3,field4.
-            //Results: "fieldName", at template_context, value is an array like ["field1", "field2", "field3", "field4"].
-            if (prop === 'a') {
-                //input need to be an array
-                if (!Array.isArray(auxArgs[prop])) auxArgs[prop] = [auxArgs[prop]];
+    Object.keys(args).forEach((prop) => {
+      // arguments after "-a", becomes an array with af-scaffolder array parser
+      // Ex.: -a fieldName:field1,field2,field3,field4.
+      // Results: "fieldName" at template_context,
+      // value is an array like ["field1", "field2", "field3", "field4"].
+      if (prop === 'a') {
+        // input need to be an array
+        if (!Array.isArray(auxArgs[prop])) auxArgs[prop] = [auxArgs[prop]];
 
-                auxArgs[prop].map(function (param) {
-                    let auxSplit = param.split(':');
-                    let auxProp = auxSplit[0];
-                    let auxValue = auxSplit[1].trim().split(',');
-                    auxArgs[auxProp] = auxValue;
-                });
-            }
-
-            // I remove reserved LIB's from the template context.
-            // This prevents templates from consuming these properties,
-            // which should change according to the evolution of LIB,
-            // without breaking their templates when updating the tool.
-            if (defaultArgs.indexOf(prop) !== -1) {
-                delete auxArgs[prop];
-            }
+        auxArgs[prop].forEach((param) => {
+          const auxSplit = param.split(':');
+          const auxProp = auxSplit[0];
+          auxArgs[auxProp] = auxSplit[1].trim().split(',');
         });
+      }
 
-        // console.log('parse_arguments=> result:', auxArgs);
-        return auxArgs;
-    },
-    rename: function (string) {
-        return handleBars.compile_template(string, this.arguments);
-    },
-    touch_file: function (path, template = '') {
-        path = scaffolder.rename(path);
+      // I remove reserved LIB's from the template context.
+      // This prevents templates from consuming these properties,
+      // which should change according to the evolution of LIB,
+      // without breaking their templates when updating the tool.
+      if (defaultArgs.indexOf(prop) !== -1) {
+        delete auxArgs[prop];
+      }
+    });
 
-        let content = '';
-        if (template) {
-            let fileTemplate = scaffolder.file_template(template);
-            content = fileTemplate;
-        }
+    // console.log('parseArguments=> result:', auxArgs);
+    return auxArgs;
+  },
+  rename(string) {
+    return handleBars.compileTemplate(string, this.arguments);
+  },
+  touchFile(path, template = '') {
+    let content = '';
+    const auxPath = scaffolder.rename(path);
 
-        if (!fs.existsSync(path)) fs.writeFileSync(path, content);
-    },
-    file_template: function (template_path) {
-        template_path = handleBars.get_template_path(this.scheme_path, template_path);
+    if (template) {
+      content = scaffolder.file_template(template);
+    }
 
-        if (files.exists(template_path)) {
-            return handleBars.compile_template(files.get_contents(template_path), this.arguments);
-        }
+    if (!fs.existsSync(auxPath)) fs.writeFileSync(auxPath, content);
+  },
+  file_template(templatePath) {
+    const auxTemplatePath = handleBars.getTemplatePath(this.schemePath, templatePath);
 
-        throw new Error(errors.template_not_found(template_path));
-    },
-    touch_folder: function (path) {
-        path = this.rename(path);
-        if (!fs.existsSync(path)) fs.mkdirSync(path);
-    },
-    build: function (models, parentPath = '.') {
-        models.map(function (model) {
-            if (_get(model, 'children', []).length > 0) {
-                scaffolder.touch_folder(`${parentPath}/${model.name}`);
-                scaffolder.build(model.children, `${parentPath}/${scaffolder.rename(model.name)}`);
-            } else {
-                scaffolder.touch_file(`${parentPath}/${model.name}`, model.template);
-            }
-        });
+    if (Files.exists(auxTemplatePath)) {
+      return handleBars.compileTemplate(Files.get_contents(auxTemplatePath), this.arguments);
+    }
 
-        return this;
-    },
-    magic: function (path, app, args) {
-        this.boot(path, app, args).build(this.models);
-    },
+    throw new Error(errors.template_not_found(templatePath));
+  },
+  touch_folder(path) {
+    // eslint-disable-next-line no-param-reassign
+    const auxPath = this.rename(path);
+    if (!fs.existsSync(auxPath)) fs.mkdirSync(auxPath);
+  },
+  build(models, parentPath = '.') {
+    models.forEach((model) => {
+      if (lodashGet(model, 'children', []).length > 0) {
+        scaffolder.touch_folder(`${parentPath}/${model.name}`);
+        scaffolder.build(model.children, `${parentPath}/${scaffolder.rename(model.name)}`);
+      } else {
+        scaffolder.touchFile(`${parentPath}/${model.name}`, model.template);
+      }
+    });
+
+    return this;
+  },
+  magic(path, app, args) {
+    this.boot(path, app, args).build(this.models);
+  },
 };
 
 module.exports = scaffolder;
