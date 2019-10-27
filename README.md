@@ -52,8 +52,9 @@ Onde o conteudo do arquivo `scheme.json` é:
             "name": "Model{{capitalize pack_name}}.js"
           }
         ]
-      },
+      }
     ]
+  }
 ]
 ```
 #### Resultado
