@@ -1,14 +1,26 @@
 {
   "name": "af-scaffolder",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Library to create and maintain application design patterns. With a structure defined in JSON you can create new modules avoiding copy and paste errors.",
   "main": "src/index.js",
   "preferGlobal": true,
   "bin": {
-    "af-scaffolder": "src/index.js"
+    "af-scaffolder": "lib/index.js"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "npm run build",
+    "nitro": "echo 'Coffeeeee timeee!'",
+    "test": "./node_modules/.bin/mocha test/**/*.js --require babel-register",
+    "lint": "./node_modules/.bin/eslint src/*.js",
+    "prepush": "npm run lint",
+    "clear": "rimraf lib",
+    "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
+    "build:watch": "npm run build -- --watch",
+    "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
+    "test:coverage": "nyc npm test"
   },
   "keywords": [
     "acelera",
@@ -19,8 +31,23 @@
   "author": "Marcus Vinícius Mendes Gonçalves",
   "license": "MIT",
   "dependencies": {
-    "handlebars": "^4.0.12",
-    "lodash": "^4.17.11",
+    "af-helpers": "^1.0.1",
+    "handlebars": "^4.4.5",
+    "lodash": "^4.17.15",
     "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.0.16",
+    "babel-preset-env": "^1.3.2",
+    "babel-register": "^6.24.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "husky": "^3.0.8",
+    "mocha": "^3.2.0",
+    "nyc": "^10.2.0",
+    "rimraf": "^2.6.1"
   }
 }
