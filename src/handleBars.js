@@ -1,9 +1,9 @@
-var dateParser = require('./helpers/dateParser');
-var stringHelper = require('./helpers/stringHelper');
+let dateParser = require('./helpers/dateParser');
+let stringHelper = require('./helpers/stringHelper');
 
-var handleBars = {
+let handleBars = {
 	boot: function() {
-		var handleBars = require('handlebars');
+		let handleBars = require('handlebars');
 		handleBars.registerHelper('lowercase', stringHelper.lowercase);
 		handleBars.registerHelper('uppercase', stringHelper.uppercase);
 		handleBars.registerHelper('capitalize', stringHelper.capitalize);
@@ -14,7 +14,7 @@ var handleBars = {
 		return this;
 	},
 	get_template_path: function(path, templatePath) {
-		var template = path.substring(0, path.lastIndexOf('/')) + '/' + templatePath;
+		let template = path.substring(0, path.lastIndexOf('/')) + '/' + templatePath;
 
 		if (path.indexOf('\\') !== -1) {
 			template = path.substring(0, path.lastIndexOf('\\')) + '\\' + templatePath;
@@ -23,10 +23,10 @@ var handleBars = {
 		return template;
 	},
 	compile_template: function(template_string, template_context) {
-		var template = this.boot().handleBars.compile(template_string);
-		var d = new Date();
+		let template = this.boot().handleBars.compile(template_string);
+		let d = new Date();
 
-		var monthNames = [
+		let monthNames = [
 			'January',
 			'February',
 			'March',

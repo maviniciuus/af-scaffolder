@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-var _get = require("lodash").get;
-var scaffolder = require("./scaffolder");
+const lodashGet = require('lodash').get;
+const minimist = require('minimist');
+const scaffolder = require('./scaffolder');
 
-var argv = require("minimist")(process.argv.slice(2));
+// s = schemaPath - n or m = are the same, name of new module
+const argv = minimist(process.argv.slice(2));
 
-//s = schemaPath - n or m = are the same, name of new module
-scaffolder.magic(_get(argv, "s"), _get(argv, "n"), argv);
+scaffolder.magic(lodashGet(argv, 's'), lodashGet(argv, 'n'), argv);

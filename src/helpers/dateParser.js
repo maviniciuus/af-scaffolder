@@ -1,14 +1,14 @@
-var dateParser = {
+let dateParser = {
   date: function() {
-    var currentDt = new Date();
-    var mm = currentDt.getMonth() + 1;
-    var dd = currentDt.getDate();
-    var yyyy = currentDt.getFullYear();
-    var date = mm + "/" + dd + "/" + yyyy;
+    let currentDt = new Date();
+    let mm = currentDt.getMonth() + 1;
+    let dd = currentDt.getDate();
+    let yyyy = currentDt.getFullYear();
+    let date = mm + "/" + dd + "/" + yyyy;
     return date;
   },
   datetime: function getFormattedDate() {
-    var d = new Date();
+    let d = new Date();
     return (
       d.getFullYear() +
       "-" +
@@ -24,7 +24,7 @@ var dateParser = {
     );
   },
   time: function getFormattedDate() {
-    var d = new Date();
+    let d = new Date();
     return d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
   }
 };

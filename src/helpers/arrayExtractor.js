@@ -1,8 +1,8 @@
-var arrayExtractor = function(arrays) {
-  var params = {};
+let arrayExtractor = function(arrays) {
+  let params = {};
   arrays.map(function(arr) {
-    var argAndValue = arr.split(":");
-    var parsedValue = argAndValue[1].split(",");
+    let argAndValue = arr.split(":");
+    let parsedValue = argAndValue[1].split(",");
     params[argAndValue[0]] = parsedValue;
   });
 

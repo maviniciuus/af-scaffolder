@@ -1,6 +1,6 @@
-var fs = require("fs");
+let fs = require("fs");
 
-var files = {
+let files = {
   exists: function(path) {
     return fs.existsSync(path);
   },
