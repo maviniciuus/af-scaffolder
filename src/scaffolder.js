@@ -1,17 +1,17 @@
-const { Files } = require('af-helpers');
 const lodashGet = require('lodash').get;
 const fs = require('fs');
 const handleBars = require('./handleBars');
 const errors = require('./helpers/errors');
+const files = require('./helpers/files');
 
 const defaultArgs = ['_', 's', 'm', 'n', 'a'];
 const scaffolder = {
   boot(schemePath, app, argv = {}) {
     this.schemePath = schemePath;
 
-    if (Files.exists(this.schemePath)) {
+    if (files.exists(this.schemePath)) {
       this.pack_name = app;
-      this.models = JSON.parse(Files.get_contents(schemePath));
+      this.models = JSON.parse(files.get_contents(schemePath));
       this.arguments = this.parseArguments(argv);
       return this;
     }
@@ -66,8 +66,8 @@ const scaffolder = {
   file_template(templatePath) {
     const auxTemplatePath = handleBars.getTemplatePath(this.schemePath, templatePath);
 
-    if (Files.exists(auxTemplatePath)) {
-      return handleBars.compileTemplate(Files.get_contents(auxTemplatePath), this.arguments);
+    if (files.exists(auxTemplatePath)) {
+      return handleBars.compileTemplate(files.get_contents(auxTemplatePath), this.arguments);
     }
 
     throw new Error(errors.template_not_found(templatePath));
