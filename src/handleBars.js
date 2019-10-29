@@ -7,6 +7,7 @@ const handleBars = {
     handlebars.registerHelper('lowercase', Strings.lowercase);
     handlebars.registerHelper('uppercase', Strings.uppercase);
     handlebars.registerHelper('capitalize', Strings.capitalize);
+    handlebars.registerHelper('snakeize', Strings.snakeize);
     handlebars.registerHelper('pluralize_pt', Strings.pluralizePt);
     handlebars.registerHelper('singulate_pt', Strings.singulatePt);
     this.handlebars = handlebars;
