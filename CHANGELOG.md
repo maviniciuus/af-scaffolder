@@ -35,7 +35,7 @@ Now the app name is available in the context of the template as: pack_name. You 
 
 ### Command Line:
 ```bash
-af-scaffolder -s ../schema-module.json -n Sample -a fields:field1,field2,field3,field4
+scaff -s ../schema-module.json -n Sample -a fields:field1,field2,field3,field4
 ```
 
 Results in...
@@ -54,7 +54,7 @@ Results in...
 #### Multiple arguments as arrays
 If you need multiple arrays at template context, dont worry about that:
 ```bash
-af-scaffolder -s ../schema-module.json -n Sample -a fields:field1,field2,field3,field4 -a sidebar:menu1,menu2,menu3
+scaff -s ../schema-module.json -n Sample -a fields:field1,field2,field3,field4 -a sidebar:menu1,menu2,menu3
 ```
 Results in...
 ```json

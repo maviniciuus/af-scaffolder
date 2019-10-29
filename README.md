@@ -28,7 +28,7 @@ npm install -g af-scaffolder
 Com o `af-scaffolder` instalado, basta rodar em qualquer terminal:
 #### Comando
 ```
-af-scaffolder -s ../path/to/awesome/scheme.json -n SampleModule
+scaff -s ../path/to/awesome/scheme.json -n SampleModule
 ```
 #### Schema
 Onde o conteudo do arquivo `scheme.json` é:
