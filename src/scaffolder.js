@@ -38,6 +38,14 @@ const scaffolder = {
         });
       }
 
+      // json parser
+      if (prop === 'j') {
+        // input need to be string
+        if (typeof auxArgs[prop] === 'string') {
+          auxArgs[prop] = JSON.parse(auxArgs[prop]);
+        }
+      }
+
       // I remove reserved LIB's from the template context.
       // This prevents templates from consuming these properties,
       // which should change according to the evolution of LIB,

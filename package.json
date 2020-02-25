@@ -1,6 +1,6 @@
 {
   "name": "af-scaffolder",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Library to create and maintain application design patterns. With a structure defined in JSON you can create new modules avoiding copy and paste errors.",
   "main": "src/index.js",
   "preferGlobal": true,
@@ -17,8 +17,8 @@
     "lint": "./node_modules/.bin/eslint src/*.js",
     "prepush": "npm run lint",
     "clear": "rimraf lib",
-    "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
-    "build:watch": "npm run build -- --watch",
+    "build": "yarn clear && ./node_modules/.bin/babel --out-dir lib src",
+    "build:watch": "yarn build -- --watch",
     "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --watch",
     "test:coverage": "nyc npm test"
   },
