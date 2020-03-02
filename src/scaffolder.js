@@ -7,6 +7,7 @@ const files = require('./helpers/files');
 const defaultArgs = ['_', 's', 'm', 'n', 'a'];
 const scaffolder = {
   boot(schemePath, app, argv = {}) {
+    this.encoding = 'utf8';
     this.schemePath = schemePath;
 
     if (files.exists(this.schemePath)) {
@@ -19,7 +20,7 @@ const scaffolder = {
     throw new Error(errors.model_not_found(schemePath));
   },
   parseArguments(args) {
-    const auxArgs = { ...args, pack_name: this.pack_name };
+    let auxArgs = { ...args, pack_name: this.pack_name };
     // console.log('parseArguments=> input:', args);
 
     Object.keys(args).forEach((prop) => {
@@ -42,8 +43,13 @@ const scaffolder = {
       if (prop === 'j') {
         // input need to be string
         if (typeof auxArgs[prop] === 'string') {
-          auxArgs[prop] = JSON.parse(auxArgs[prop]);
+          auxArgs = { ...auxArgs, ...JSON.parse(auxArgs[prop]) };
         }
+      }
+
+      // encoding
+      if (prop === 'e') {
+        scaffolder.encoding = auxArgs[prop];
       }
 
       // I remove reserved LIB's from the template context.
@@ -61,7 +67,7 @@ const scaffolder = {
   rename(string) {
     return handleBars.compileTemplate(string, this.arguments);
   },
-  touchFile(path, template = '') {
+  touchFile(path, template = '', encoding) {
     let content = '';
     const auxPath = scaffolder.rename(path);
 
@@ -69,7 +75,7 @@ const scaffolder = {
       content = scaffolder.file_template(template);
     }
 
-    if (!fs.existsSync(auxPath)) fs.writeFileSync(auxPath, content);
+    if (!fs.existsSync(auxPath)) fs.writeFileSync(auxPath, content, encoding);
   },
   file_template(templatePath) {
     const auxTemplatePath = handleBars.getTemplatePath(this.schemePath, templatePath);
@@ -91,7 +97,7 @@ const scaffolder = {
         scaffolder.touch_folder(`${parentPath}/${model.name}`);
         scaffolder.build(model.children, `${parentPath}/${scaffolder.rename(model.name)}`);
       } else {
-        scaffolder.touchFile(`${parentPath}/${model.name}`, model.template);
+        scaffolder.touchFile(`${parentPath}/${model.name}`, model.template, (scaffolder.encoding));
       }
     });
 
