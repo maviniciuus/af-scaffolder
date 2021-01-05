@@ -1,8 +1,12 @@
 # af-scaffolder v2.0
+![GitHub package.json version](https://img.shields.io/github/package-json/v/maviniciuus/af-scaffolder)
+![Libraries.io dependency status for latest release, scoped npm package](https://img.shields.io/librariesio/release/npm/af-scaffolder) ![npm](https://img.shields.io/npm/dy/af-scaffolder) 
+[![](https://img.shields.io/github/languages/code-size/badges/shields.svg)](https://github.com/maviniciuus/af-scaffolder) 
+[![](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/af-scaffolder) 
+[![](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/maviniciuus/af-scaffolder) 
+![GitHub Repo stars](https://img.shields.io/github/stars/maviniciuus/af-scaffolder)
+![GitHub issues](https://img.shields.io/github/issues/maviniciuus/af-scaffolder)
 
-[![](https://img.shields.io/github/languages/code-size/badges/shields.svg)](https://github.com/maviniciuus/af-scaffolder)
-[![](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/af-scaffolder)
-[![](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/maviniciuus/af-scaffolder)
 
 ## Sobre
 Uma biblioteca para manter design patterns. Com a estrutura definida em JSON, você cria o esqueleto e gera os arquivos baseados em templates caso queira. Evite erros de copiar e colar, o código é gerado automaticamente a partir do template.
