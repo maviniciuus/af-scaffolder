@@ -154,6 +154,11 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@fnando/cpf@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@fnando/cpf/-/cpf-1.0.2.tgz#e78c46c5ee599b17f5d81b46c336b0e6eec8ace4"
+  integrity sha512-lfSfdONVQ/1aKvsA7PnawQjSoE5PXOyHich3WFIbAuYRMAw6Ax1FmIWxPxCfHP/Rh0R2cG/CxaimUW7NI6rgEQ==
+
 "@babel/parser@^7.12.10", "@babel/parser@^7.12.11", "@babel/parser@^7.12.7":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.12.11.tgz#9ce3595bcd74bc5c466905e86c535b8b25011e79"
@@ -234,11 +239,12 @@ acorn@^7.1.0:
   integrity sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==
 
 af-helpers@^1.1.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/af-helpers/-/af-helpers-1.4.0.tgz#a6738a1b01e91e4d1ddc77f7179ac8c4508a662a"
-  integrity sha512-kkK3r/DjXTIR0DhvUs7XpSo8txtS87JPybsY8pqp5TwjEIofmoNrC+guBgY2xYgP2x0P1Z1TPfeEvewMGQy8Fw==
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/af-helpers/-/af-helpers-1.7.1.tgz#0d6bd912f5db93d1a2f8db67f71128568c76d969"
+  integrity sha512-T3bnEuQtqu4VTPt0yzLEidR0qJFovax90ZaQYyOnpMepedH6SkEtUpf+i/gc4FSDPj6jYcgPVycUHqEbGC7XLQ==
   dependencies:
-    cpf_cnpj "^0.2.0"
+    "@fnando/cnpj" "^1.0.2"
+    "@fnando/cpf" "^1.0.2"
     moment "^2.23.0"
     numero-por-extenso "^1.0.5"
     to-snake-case "^1.0.0"
@@ -1329,10 +1335,13 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cpf_cnpj@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/cpf_cnpj/-/cpf_cnpj-0.2.0.tgz#a032c19242a38e8363edce4e78bb1fbe9d664aa5"
-  integrity sha1-oDLBkkKjjoNj7c5OeLsfvp1mSqU=
+cross-spawn@^4:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-4.0.2.tgz#7b9247621c23adfdd3856004a823cbe397424d41"
+  integrity sha1-e5JHYhwjrf3ThWAEqCPL45dCTUE=
+  dependencies:
+    lru-cache "^4.0.1"
+    which "^1.2.9"
 
 cross-spawn@^6.0.5:
   version "6.0.5"
