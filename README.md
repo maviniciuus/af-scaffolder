@@ -1,4 +1,4 @@
-# af-scaffolder v2.0
+# af-scaffolder v2
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/maviniciuus/af-scaffolder)
 ![Libraries.io dependency status for latest release, scoped npm package](https://img.shields.io/librariesio/release/npm/af-scaffolder) ![npm](https://img.shields.io/npm/dy/af-scaffolder) 
 [![](https://img.shields.io/github/languages/code-size/badges/shields.svg)](https://github.com/maviniciuus/af-scaffolder) 
